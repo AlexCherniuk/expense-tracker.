@@ -4,10 +4,13 @@ import './NewExpense.css';
 
 
 export default function NewExpense(props) {
+
+const unicKey = Math.random().toString();
+
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
-            ...enteredExpenseData, 
-            id: Math.random().toString()
+            ...enteredExpenseData,
+            id: unicKey,
         };
         props.onAddedExpenseData(expenseData);
 
@@ -15,7 +18,7 @@ export default function NewExpense(props) {
 
     return (
         <div className='new-expense'>
-            <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}/>
+            <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
         </div>
     )
 }
