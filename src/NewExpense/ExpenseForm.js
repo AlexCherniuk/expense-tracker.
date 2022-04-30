@@ -6,11 +6,6 @@ export default function ExpenseForm(props) { //
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmoutn] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
-    //     // const [userInput, setUserInput] = useState({ //alternative method;
-    //     //     enteredTitle: '',
-    //     //     enteredAmoutn: '',
-    //     //     enteredDate: ''
-    //     // })
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -35,28 +30,8 @@ export default function ExpenseForm(props) { //
         setEnteredTitle('');
         setEnteredAmoutn('');
         setEnteredDate('');
+        props.onCancel()
     }
-
-
-
-    //     // const titleChangeHandler = (event) => {//alternative method. If my state depends of the previous state.
-    //     //    setUserInput((prevState)=>{
-    //     //        return{...prevState, enteredTitle: event.target.value};
-    //     //    })
-    //     // }
-
-    //     // const amountChangeHandler = (event) => {
-    //     //     setUserInput((prevState)=>{
-    //     //         return {...prevState,  enteredAmoutn: event.target.value}; 
-    //     //     })
-    //     // }
-
-    //     // const dateChangeHandler = (event) => {
-    //     //    setUserInput((prevState)=>{
-    //     //        return{...prevState, enteredDate: event.target.value};
-    //     //    })
-    //     // }
-
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
@@ -74,6 +49,7 @@ export default function ExpenseForm(props) { //
                 </div>
             </div>
             <div className='new-expense__actions'>
+                <button type='button'onClick={props.onCancel}>Cancel</button>
                 <button type='submit' >Add Expense</button>
             </div>
         </form>
